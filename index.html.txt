@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>非遗导览·语音讲解</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f5f1e8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            padding: 20px;
+        }
+        .player-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px 25px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 360px;
+            width: 100%;
+        }
+        .icon { font-size: 48px; margin-bottom: 10px; }
+        h2 {
+            font-size: 22px;
+            color: #3e2e1f;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .sub {
+            font-size: 14px;
+            color: #8b7a62;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 16px;
+        }
+        audio {
+            width: 100%;
+            outline: none;
+            border-radius: 12px;
+            background: #f9f6f0;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #b3a68f;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-card">
+        <div class="icon"></div>
+        <h2 id="title">非遗讲解</h2>
+        <div class="sub">请点击播放按钮收听</div>
+        <audio id="audioPlayer" controls>
+            您的浏览器不支持音频播放，请更新浏览器。
+        </audio>
+        <div class="footer">中华文脉传承实践团 · 临沂</div>
+    </div>
+
+    <script>
+        // 获取网址中 ?name= 后面的参数
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // 文物名称与对应音频文件名的映射表
+        const audioMap = {
+            "zhujian": { file: "zhujian.mp3", title: "银雀山汉墓竹简" },
+            "xishichi": { file: "xishichi.mp3", title: "王羲之洗砚池" },
+            "sa": { file: "sa.mp3", title: "糁制作技艺" },
+            "yangge": { file: "yangge.mp3", title: "临沂秧歌" },
+            "default": { file: "default.mp3", title: "非遗导览" }
+        };
+
+        const param = getQueryParam("name");
+        const selected = audioMap[param] || audioMap["default"];
+
+        // 设置页面标题和音频来源
+        document.getElementById("title").textContent = selected.title;
+        document.getElementById("audioPlayer").src = selected.file;
+        document.title = selected.title + " - 非遗导览";
+    </script>
+</body>
+</html>
