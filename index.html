@@ -1,18 +1,308 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>临沂文化导览</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>银雀山汉墓竹简博物馆语音导览</title>
+  <style>
+    :root{
+      --bg:#f6f8fc;
+      --card:#ffffff;
+      --text:#17315c;
+      --muted:#6d7b97;
+      --blue:#2457c5;
+      --blue2:#3f7bff;
+      --line:rgba(36,87,197,.10);
+      --shadow:0 12px 30px rgba(36,87,197,.12);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+      background:linear-gradient(180deg,#eef4ff 0%,#ffffff 40%,#f6f8fc 100%);
+      color:var(--text);
+      padding:16px;
+    }
+    .wrap{
+      max-width:760px;
+      margin:0 auto;
+    }
+    .hero{
+      background:linear-gradient(135deg,#ffffff 0%,#f4f8ff 100%);
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:24px 18px 20px;
+      text-align:center;
+      overflow:hidden;
+    }
+    .badge{
+      display:inline-block;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(36,87,197,.08);
+      color:var(--blue);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+    }
+    h1{
+      margin:14px 0 8px;
+      font-size:28px;
+      line-height:1.2;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+    .note{
+      margin:14px auto 0;
+      max-width:560px;
+      color:#53627e;
+      font-size:13px;
+      line-height:1.7;
+      background:#f8fbff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:12px 14px;
+      text-align:left;
+    }
+    .list{
+      margin-top:16px;
+      display:grid;
+      gap:14px;
+    }
+    .card{
+      background:rgba(255,255,255,.96);
+      border:1px solid var(--line);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card-top{
+      padding:16px 16px 10px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .title{
+      margin:0;
+      font-size:18px;
+      line-height:1.35;
+    }
+    .tag{
+      flex:0 0 auto;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(36,87,197,.08);
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+    }
+    .desc{
+      margin:0;
+      padding:0 16px 12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.7;
+    }
+    .player{
+      padding:0 16px 16px;
+    }
+    .btn{
+      width:100%;
+      border:none;
+      border-radius:18px;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#fff;
+      font-size:16px;
+      font-weight:800;
+      padding:16px 18px;
+      box-shadow:0 12px 24px rgba(63,123,255,.28);
+      cursor:pointer;
+    }
+    .btn:active{transform:scale(.99)}
+    .meta{
+      margin-top:10px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .progress{
+      margin-top:10px;
+      width:100%;
+      height:10px;
+      border-radius:999px;
+      overflow:hidden;
+      background:#edf2ff;
+    }
+    .progress > div{
+      width:0%;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--blue),var(--blue2));
+    }
+    .footer{
+      margin:18px 4px 0;
+      text-align:center;
+      color:#8b96ad;
+      font-size:12px;
+      line-height:1.7;
+    }
+    audio{display:none}
+    @media (max-width:640px){
+      body{padding:12px}
+      h1{font-size:24px}
+      .card-top{padding:14px 14px 8px}
+      .desc,.player{padding-left:14px;padding-right:14px}
+    }
+  </style>
 </head>
-<body style="text-align:center; font-family:Arial;">
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="badge">YINQUESHAN MUSEUM AUDIO GUIDE</div>
+      <h1> 银雀山汉墓竹简博物馆语音导览</h1>
+      <p class="sub">NFC触发后打开本页面，即可播放对应文物讲解音频。</p>
+      <div class="note">
+        说明：本页面仅用于银雀山汉墓竹简博物馆文物/展品讲解。<br>
+        每个按钮对应一个音频文件，请确保文件名与代码中的 src 完全一致。
+      </div>
+    </section>
 
-<h2>临沂文化导览</h2>
-<p>点击下方播放讲解音频</p>
+    <div class="list">
 
-<audio controls>
-    <source src="audio1.mp3" type="audio/mpeg">
-    您的浏览器不支持音频播放
-</audio>
+      <article class="card">
+        <div class="card-top">
+          <h2 class="title">银雀山汉简总览</h2>
+          <span class="tag">入口导览</span>
+        </div>
+        <p class="desc">介绍银雀山汉墓竹简博物馆的核心背景、 银雀山汉简的发现意义与馆藏特色。</p>
+        <div class="player">
+          <button class="btn" data-audio="audio-yinqueshan-overview.mp3">▶ 播放讲解</button>
+          <div class="progress"><div></div></div>
+          <div class="meta"><span class="time">0:00 / 0:00</span><span class="status">未播放</span></div>
+          <audio preload="metadata" src="audio-yinqueshan-overview.mp3"></audio>
+        </div>
+      </article>
 
+      <article class="card">
+        <div class="card-top">
+          <h2 class="title">孙子兵法竹简</h2>
+          <span class="tag">重点文物</span>
+        </div>
+        <p class="desc">围绕《孙子兵法》竹简的历史价值、军事思想与文献研究意义进行讲解。</p>
+        <div class="player">
+          <button class="btn" data-audio="audio-sunzi.mp3">▶ 播放讲解</button>
+          <div class="progress"><div></div></div>
+          <div class="meta"><span class="time">0:00 / 0:00</span><span class="status">未播放</span></div>
+          <audio preload="metadata" src="audio-sunzi.mp3"></audio>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h2 class="title"> 银雀山汉简与古代军政文化</h2>
+          <span class="tag">文化解读</span>
+        </div>
+        <p class="desc">从简牍内容切入，讲解汉代军政制度、文书形式和当时社会治理方式。</p>
+        <div class="player">
+          <button class="btn" data-audio="audio-junzheng.mp3">▶ 播放讲解</button>
+          <div class="progress"><div></div></div>
+          <div class="meta"><span class="time">0:00 / 0:00</span><span class="status">未播放</span></div>
+          <audio preload="metadata" src="audio-junzheng.mp3"></audio>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h2 class="title">竹简保护与数字展示</h2>
+          <span class="tag">保护科普</span>
+        </div>
+        <p class="desc">介绍竹简文物的保护难点，以及现代数字导览、NFC讲解在博物馆中的应用。</p>
+        <div class="player">
+          <button class="btn" data-audio="audio-protection.mp3">▶ 播放讲解</button>
+          <div class="progress"><div></div></div>
+          <div class="meta"><span class="time">0:00 / 0:00</span><span class="status">未播放</span></div>
+          <audio preload="metadata" src="audio-protection.mp3"></audio>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="footer">
+      适用于 NFC 卡片跳转与现场音频导览展示<br>
+      建议把每个音频控制在 30—60 秒，方便游客快速收听
+    </div>
+  </div>
+
+  <script>
+    const cards = [...document.querySelectorAll('.card')];
+
+    cards.forEach(card => {
+      const audio = card.querySelector('audio');
+      const btn = card.querySelector('.btn');
+      const bar = card.querySelector('.progress > div');
+      const time = card.querySelector('.time');
+      const status = card.querySelector('.status');
+
+      const fmt = (t) => {
+        if (!isFinite(t)) return '0:00';
+        const m = Math.floor(t / 60);
+        const s = String(Math.floor(t % 60)).padStart(2, '0');
+        return `${m}:${s}`;
+      };
+
+      audio.addEventListener('loadedmetadata', () => {
+        time.textContent = `0:00 / ${fmt(audio.duration)}`;
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+          bar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+          time.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;
+        }
+      });
+
+      audio.addEventListener('ended', () => {
+        btn.textContent = '▶ 重新播放';
+        status.textContent = '播放完成';
+        bar.style.width = '0%';
+        audio.currentTime = 0;
+      });
+
+      btn.addEventListener('click', async () => {
+        try {
+          document.querySelectorAll('audio').forEach(a => {
+            if (a !== audio) a.pause();
+          });
+          document.querySelectorAll('.btn').forEach(other => {
+            if (other !== btn && other.textContent.includes('暂停')) {
+              other.textContent = '▶ 播放讲解';
+            }
+          });
+
+          if (audio.paused) {
+            await audio.play();
+            btn.textContent = '⏸ 暂停讲解';
+            status.textContent = '正在播放';
+          } else {
+            audio.pause();
+            btn.textContent = '▶ 播放讲解';
+            status.textContent = '已暂停';
+          }
+        } catch (e) {
+          status.textContent = '播放失败，请检查音频文件';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
