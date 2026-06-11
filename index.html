@@ -43,123 +43,153 @@
       padding:7px 12px;
       border-radius:999px;
       background:rgba(36,87,197,.08);
-      color:var(--blue);
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:.08em;
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>银雀山汉墓竹简博物馆 · 语音导览</title>
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#111b33;
+      --card:#121d35cc;
+      --card2:#16233f;
+      --line:rgba(255,255,255,.08);
+      --text:#eef4ff;
+      --muted:#a8b3cf;
+      --gold:#f6d56f;
+      --gold2:#f0b84a;
+      --blue:#5b8cff;
+      --shadow:0 16px 40px rgba(0,0,0,.28);
+      --radius:24px;
     }
-    h1{
-      margin:14px 0 8px;
-      font-size:28px;
-      line-height:1.2;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;height:100%}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(246,213,111,.12), transparent 30%),
+        radial-gradient(circle at top right, rgba(91,140,255,.10), transparent 26%),
+        linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 55%, #0e162b 100%);
+      background-attachment: fixed;
     }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
-    }
-    .note{
-      margin:14px auto 0;
-      max-width:560px;
-      color:#53627e;
-      font-size:13px;
-      line-height:1.7;
-      background:#f8fbff;
+    .wrap{max-width:920px;margin:0 auto;padding:18px 14px 28px}
+    .hero{
+      position:relative;
+      overflow:hidden;
       border:1px solid var(--line);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      background:linear-gradient(135deg, rgba(20,30,56,.92), rgba(15,24,44,.96));
+      padding:22px 18px 18px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      right:-80px; top:-70px;
+      width:240px;height:240px;border-radius:50%;
+      background:radial-gradient(circle, rgba(246,213,111,.14), rgba(246,213,111,0) 70%);
+      pointer-events:none;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:-70px; bottom:-90px;
+      width:240px;height:240px;border-radius:50%;
+      background:radial-gradient(circle, rgba(91,140,255,.16), rgba(91,140,255,0) 70%);
+      pointer-events:none;
+    }
+    .topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 12px;border-radius:999px;
+      background:rgba(246,213,111,.12);
+      border:1px solid rgba(246,213,111,.22);
+      color:var(--gold);
+      font-size:12px;font-weight:800;letter-spacing:.08em;
+    }
+    .chiprow{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+    .chip{
+      padding:7px 11px;border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      color:var(--muted);font-size:12px;font-weight:700;
+    }
+    h1{margin:16px 0 10px;font-size:31px;line-height:1.2;letter-spacing:.02em}
+    .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.8;max-width:720px}
+    .tip{
+      margin-top:14px;
+      padding:13px 14px;
       border-radius:18px;
-      padding:12px 14px;
-      text-align:left;
-    }
-    .list{
-      margin-top:16px;
-      display:grid;
-      gap:14px;
-    }
-    .card{
-      background:rgba(255,255,255,.96);
+      background:rgba(255,255,255,.05);
       border:1px solid var(--line);
-      border-radius:22px;
+      color:#ced8f3;
+      font-size:13px;line-height:1.7;
+    }
+    .layout{display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px}
+    .section-title{
+      display:flex;justify-content:space-between;align-items:end;gap:10px;flex-wrap:wrap;
+      margin:18px 4px 10px;
+    }
+    .section-title h2{margin:0;font-size:18px;letter-spacing:.02em}
+    .section-title span{font-size:12px;color:var(--muted)}
+
+    .card{
+      background:linear-gradient(180deg, rgba(18,29,53,.95), rgba(18,29,53,.86));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
       box-shadow:var(--shadow);
       overflow:hidden;
     }
-    .card-top{
-      padding:16px 16px 10px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .title{
-      margin:0;
-      font-size:18px;
-      line-height:1.35;
-    }
+    .card-top{padding:16px 16px 10px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+    .title{margin:0;font-size:19px;line-height:1.35}
     .tag{
       flex:0 0 auto;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(36,87,197,.08);
-      color:var(--blue);
-      font-size:11px;
-      font-weight:700;
+      padding:6px 10px;border-radius:999px;
+      background:rgba(246,213,111,.12);
+      border:1px solid rgba(246,213,111,.18);
+      color:var(--gold);font-size:11px;font-weight:800
     }
-    .desc{
-      margin:0;
-      padding:0 16px 12px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.7;
-    }
-    .player{
-      padding:0 16px 16px;
-    }
+    .desc{margin:0;padding:0 16px 12px;color:var(--muted);font-size:13px;line-height:1.75}
+    .player{padding:0 16px 16px}
     .btn{
-      width:100%;
-      border:none;
-      border-radius:18px;
-      background:linear-gradient(135deg,var(--blue),var(--blue2));
-      color:#fff;
-      font-size:16px;
-      font-weight:800;
-      padding:16px 18px;
-      box-shadow:0 12px 24px rgba(63,123,255,.28);
-      cursor:pointer;
+      width:100%;border:none;cursor:pointer;
+      padding:15px 18px;border-radius:18px;
+      background:linear-gradient(135deg,var(--gold2),var(--gold));
+      color:#111827;font-weight:900;font-size:16px;
+      box-shadow:0 14px 24px rgba(246,213,111,.18);
     }
     .btn:active{transform:scale(.99)}
-    .meta{
-      margin-top:10px;
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .progress{
-      margin-top:10px;
-      width:100%;
-      height:10px;
-      border-radius:999px;
-      overflow:hidden;
-      background:#edf2ff;
-    }
-    .progress > div{
-      width:0%;
-      height:100%;
-      border-radius:999px;
-      background:linear-gradient(90deg,var(--blue),var(--blue2));
-    }
-    .footer{
-      margin:18px 4px 0;
-      text-align:center;
-      color:#8b96ad;
-      font-size:12px;
-      line-height:1.7;
-    }
+    .meta{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)}
+    .progress{margin-top:10px;width:100%;height:10px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08)}
+    .progress>div{width:0%;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--gold2),var(--gold))}
     audio{display:none}
-    @media (max-width:640px){
-      body{padding:12px}
-      h1{font-size:24px}
+
+    .footer{
+      margin-top:18px;
+      text-align:center;
+      color:#9aa7c8;
+      font-size:12px;
+      line-height:1.8;
+      padding:10px 8px 0;
+    }
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .panel{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:14px;
+      color:#cfd8ef;
+      line-height:1.75;
+      font-size:13px;
+    }
+    .panel strong{color:#fff}
+    @media (max-width:720px){
+      .grid-2{grid-template-columns:1fr}
+      h1{font-size:26px}
+      .wrap{padding:12px 12px 24px}
       .card-top{padding:14px 14px 8px}
       .desc,.player{padding-left:14px;padding-right:14px}
     }
@@ -168,37 +198,31 @@
 <body>
   <div class="wrap">
     <section class="hero">
-      <div class="badge">YINQUESHAN MUSEUM AUDIO GUIDE</div>
-      <h1> 银雀山汉墓竹简博物馆语音导览</h1>
-      <p class="sub">NFC触发后打开本页面，即可播放对应文物讲解音频。</p>
-      <div class="note">
-        说明：本页面仅用于银雀山汉墓竹简博物馆文物/展品讲解。<br>
-        每个按钮对应一个音频文件，请确保文件名与代码中的 src 完全一致。
+      <div class="topline">
+        <div class="badge">银雀山汉墓竹简博物馆 · AUDIO GUIDE</div>
+        <div class="chiprow">
+          <span class="chip">NFC导览</span>
+          <span class="chip">文物讲解</span>
+          <span class="chip">移动端优化</span>
+        </div>
       </div>
+      <h1>银雀山汉墓竹简博物馆语音导览</h1>
+      <p class="sub">本页面用于银雀山汉墓竹简博物馆文物与展品的音频讲解，适合通过 NFC 卡片触发后直接打开。页面简洁、按钮够大、手机易操作，便于现场演示与后续扩展。</p>
+      <div class="tip">使用方式：将不同展品对应的 NFC 标签写入本页链接，游客轻触后进入页面，再点击对应按钮即可播放讲解音频。每条讲解建议控制在 30—60 秒，保证信息准确且便于快速参观。</div>
     </section>
 
-    <div class="list">
+    <div class="section-title">
+      <h2>导览音频列表</h2>
+      <span>点击按钮即可播放 / 再点暂停</span>
+    </div>
 
+    <div class="layout">
       <article class="card">
         <div class="card-top">
-          <h2 class="title">银雀山汉简总览</h2>
-          <span class="tag">入口导览</span>
-        </div>
-        <p class="desc">介绍银雀山汉墓竹简博物馆的核心背景、 银雀山汉简的发现意义与馆藏特色。</p>
-        <div class="player">
-          <button class="btn" data-audio="audio-yinqueshan-overview.mp3">▶ 播放讲解</button>
-          <div class="progress"><div></div></div>
-          <div class="meta"><span class="time">0:00 / 0:00</span><span class="status">未播放</span></div>
-          <audio preload="metadata" src="audio-yinqueshan-overview.mp3"></audio>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-top">
-          <h2 class="title">孙子兵法竹简</h2>
+          <h3 class="title">《孙子兵法》竹简</h3>
           <span class="tag">重点文物</span>
         </div>
-        <p class="desc">围绕《孙子兵法》竹简的历史价值、军事思想与文献研究意义进行讲解。</p>
+        <p class="desc">介绍 银雀山汉简的发现意义、文献价值与《孙子兵法》在中国军事思想史中的地位。</p>
         <div class="player">
           <button class="btn" data-audio="audio-sunzi.mp3">▶ 播放讲解</button>
           <div class="progress"><div></div></div>
@@ -209,10 +233,24 @@
 
       <article class="card">
         <div class="card-top">
-          <h2 class="title"> 银雀山汉简与古代军政文化</h2>
+          <h3 class="title"> 银雀山汉简总览</h3>
+          <span class="tag">入口导览</span>
+        </div>
+        <p class="desc">概述博物馆核心展陈与竹简文化背景，帮助观众快速建立参观认知。</p>
+        <div class="player">
+          <button class="btn" data-audio="audio-yinqueshan-overview.mp3">▶ 播放讲解</button>
+          <div class="progress"><div></div></div>
+          <div class="meta"><span class="time">0:00 / 0:00</span><span class="status">未播放</span></div>
+          <audio preload="metadata" src="audio-yinqueshan-overview.mp3"></audio>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h3 class="title">汉代军政与竹简文书</h3>
           <span class="tag">文化解读</span>
         </div>
-        <p class="desc">从简牍内容切入，讲解汉代军政制度、文书形式和当时社会治理方式。</p>
+        <p class="desc">从简牍内容切入，讲解汉代军政制度、文书形式与历史信息的保存方式。</p>
         <div class="player">
           <button class="btn" data-audio="audio-junzheng.mp3">▶ 播放讲解</button>
           <div class="progress"><div></div></div>
@@ -223,10 +261,10 @@
 
       <article class="card">
         <div class="card-top">
-          <h2 class="title">竹简保护与数字展示</h2>
-          <span class="tag">保护科普</span>
+          <h3 class="title">竹简保护与数字导览</h3>
+          <span class="tag">科普展示</span>
         </div>
-        <p class="desc">介绍竹简文物的保护难点，以及现代数字导览、NFC讲解在博物馆中的应用。</p>
+        <p class="desc">介绍竹简文物的保护要点，以及 NFC 语音导览在文博场景中的应用价值。</p>
         <div class="player">
           <button class="btn" data-audio="audio-protection.mp3">▶ 播放讲解</button>
           <div class="progress"><div></div></div>
@@ -234,18 +272,24 @@
           <audio preload="metadata" src="audio-protection.mp3"></audio>
         </div>
       </article>
+    </div>
 
+    <div class="section-title">
+      <h2>部署建议</h2>
+      <span>适合打印 / 现场 / 答辩</span>
+    </div>
+    <div class="grid-2">
+      <div class="panel"><strong>建议文件命名</strong><br>音频文件名与代码中的 src 必须一致，建议全部使用英文小写加短横线，例如：<br>audio-sunzi.mp3</div>
+      <div class="panel"><strong>NFC放置方式</strong><br>将 NFC 标签放在展签旁、亚克力底座上或可拆卸小牌中，不直接粘贴在文物本体或展柜玻璃上，便于回收与维护。</div>
     </div>
 
     <div class="footer">
-      适用于 NFC 卡片跳转与现场音频导览展示<br>
-      建议把每个音频控制在 30—60 秒，方便游客快速收听
+      银座山汉墓竹简博物馆语音导览页面 · 适合 NFC 一触即达 · 低成本、可复制、易维护
     </div>
   </div>
 
   <script>
     const cards = [...document.querySelectorAll('.card')];
-
     cards.forEach(card => {
       const audio = card.querySelector('audio');
       const btn = card.querySelector('.btn');
@@ -280,15 +324,10 @@
 
       btn.addEventListener('click', async () => {
         try {
-          document.querySelectorAll('audio').forEach(a => {
-            if (a !== audio) a.pause();
-          });
+          document.querySelectorAll('audio').forEach(a => { if (a !== audio) a.pause(); });
           document.querySelectorAll('.btn').forEach(other => {
-            if (other !== btn && other.textContent.includes('暂停')) {
-              other.textContent = '▶ 播放讲解';
-            }
+            if (other !== btn && other.textContent.includes('暂停')) other.textContent = '▶ 播放讲解';
           });
-
           if (audio.paused) {
             await audio.play();
             btn.textContent = '⏸ 暂停讲解';
@@ -299,7 +338,7 @@
             status.textContent = '已暂停';
           }
         } catch (e) {
-          status.textContent = '播放失败，请检查音频文件';
+          status.textContent = '播放失败，请检查音频文件路径';
         }
       });
     });
