@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>银雀山汉墓竹简博物馆 · 语音导览</title>
 <style>
+  /* ===== 你原来的 CSS 完全保留，这里不重复贴 ===== */
   :root{
     --bg1:#f7faff;
     --bg2:#eaf2ff;
@@ -148,9 +149,7 @@
     border:none;cursor:pointer;padding:11px 14px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--blue2));
     color:#fff;font-weight:800;box-shadow:0 10px 22px rgba(63,123,255,.18)
   }
-  .single-wrap{
-    margin-top:18px;
-  }
+  .single-wrap{margin-top:18px}
   .single-card{
     background:var(--card);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;
   }
@@ -206,7 +205,7 @@
     </div>
     <h1 id="pageTitle">银雀山汉墓竹简博物馆语音导览</h1>
     <p class="sub" id="pageSub">
-      支持“总首页 + 单文物页面”的双模式结构。总首页按首字母分组展示全部文物；
+      支持"总首页 + 单文物页面"的双模式结构。总首页按首字母分组展示全部文物；
       每一张 NFC 卡可单独绑定一个文物网址，打开后只显示该文物的音频播放页。
     </p>
     <div class="tip" id="pageTip">
@@ -218,7 +217,7 @@
       <label class="search" aria-label="搜索文物">
         <input id="searchInput" type="text" placeholder="搜索文物名称或关键词…" />
       </label>
-      <div class="seg">
+      <div class="seg" id="filterBtns">
         <button class="active" data-filter="all">全部</button>
         <button data-filter="AZ">A-Z</button>
         <button data-filter="#">其他</button>
@@ -256,14 +255,3 @@
       <div class="single-body">
         <button class="bigbtn" id="singleBtn">▶ 播放讲解</button>
         <div class="progress"><div id="singleBar"></div></div>
-        <div class="audio-meta">
-          <spa
-            {
-  slug:'newitem',
-  initial:'N',
-  title:'东方树叶',
-  tag:'重点文物',
-  desc:'好茶无需摇',
-  audio:'audio/audio-dongfangshuye.mp3',
-  keywords:'关键词1 关键词2'
-}
