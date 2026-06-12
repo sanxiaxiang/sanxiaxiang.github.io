@@ -1,196 +1,219 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>银雀山汉墓竹简博物馆 · 语音导览</title>
-<style>
-  /* ===== 你原来的 CSS 完全保留，这里不重复贴 ===== */
-  :root{
-    --bg1:#f7faff;
-    --bg2:#eaf2ff;
-    --card:rgba(255,255,255,.94);
-    --line:rgba(36,87,197,.10);
-    --text:#17315c;
-    --muted:#6b7a99;
-    --blue:#2457c5;
-    --blue2:#3f7bff;
-    --gold:#d8b85a;
-    --shadow:0 12px 28px rgba(36,87,197,.12);
-    --radius:22px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;min-height:100%}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-    color:var(--text);
-    background:
-      radial-gradient(circle at top left, rgba(63,123,255,.12), transparent 28%),
-      radial-gradient(circle at top right, rgba(216,184,90,.10), transparent 24%),
-      linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 100%);
-    background-attachment: fixed;
-  }
-  .wrap{max-width:1060px;margin:0 auto;padding:18px 14px 28px}
-  .hero{
-    position:relative;overflow:hidden;
-    border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);
-    background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(244,249,255,.98));
-    padding:22px 18px 18px;
-  }
-  .hero::before{
-    content:"";position:absolute;right:-80px;top:-60px;width:220px;height:220px;border-radius:50%;
-    background:radial-gradient(circle, rgba(63,123,255,.12), rgba(63,123,255,0) 70%);pointer-events:none;
-  }
-  .hero::after{
-    content:"";position:absolute;left:-80px;bottom:-80px;width:220px;height:220px;border-radius:50%;
-    background:radial-gradient(circle, rgba(216,184,90,.12), rgba(216,184,90,0) 72%);pointer-events:none;
-  }
-  .topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-  .badge{
-    display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;
-    background:rgba(36,87,197,.08);border:1px solid rgba(36,87,197,.12);
-    color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.08em;
-  }
-  .chiprow{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
-  .chip{
-    padding:7px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);
-    color:var(--muted);font-size:12px;font-weight:700;
-  }
-  h1{margin:16px 0 10px;font-size:31px;line-height:1.2;letter-spacing:.02em}
-  .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.8;max-width:860px}
-  .tip{
-    margin-top:14px;padding:13px 14px;border-radius:18px;
-    background:rgba(36,87,197,.05);border:1px solid var(--line);color:#4d5f82;
-    font-size:13px;line-height:1.7;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>银雀山汉墓竹简博物馆 · 语音导览</title>
+  <style>
+    :root {
+      --bg1: #f7faff;
+      --bg2: #eaf2ff;
+      --card: rgba(255,255,255,.94);
+      --line: rgba(36,87,197,.10);
+      --text: #17315c;
+      --muted: #6b7a99;
+      --blue: #2457c5;
+      --blue2: #3f7bff;
+      --gold: #d8b85a;
+      --shadow: 0 12px 28px rgba(36,87,197,.12);
+      --radius: 22px;
+    }
 
-  .toolbar{
-    margin-top:14px;
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:10px;
-  }
-  .search{
-    display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
-    border-radius:18px;padding:12px 14px;box-shadow:0 8px 22px rgba(0,0,0,.03)
-  }
-  .search input{
-    width:100%;border:none;outline:none;background:transparent;font-size:15px;color:var(--text)
-  }
-  .seg{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-  .seg button,.plainbtn{
-    border:none;cursor:pointer;padding:11px 14px;border-radius:16px;background:#fff;color:var(--muted);
-    border:1px solid var(--line);font-weight:700;box-shadow:0 8px 20px rgba(0,0,0,.03)
-  }
-  .seg button.active{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border-color:transparent}
+    * { box-sizing: border-box }
+    html, body { margin: 0; padding: 0; min-height: 100% }
 
-  .section-title{
-    display:flex;justify-content:space-between;align-items:end;gap:10px;flex-wrap:wrap;
-    margin:18px 4px 10px;
-  }
-  .section-title h2{margin:0;font-size:18px;letter-spacing:.02em}
-  .section-title span{font-size:12px;color:var(--muted)}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(63,123,255,.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(216,184,90,.10), transparent 24%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+      background-attachment: fixed;
+    }
 
-  .group{margin-top:16px}
-  .group-head{
-    display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-    margin:6px 2px 10px;
-  }
-  .group-letter{
-    display:inline-flex;align-items:center;justify-content:center;
-    min-width:34px;height:34px;padding:0 10px;border-radius:999px;
-    background:rgba(36,87,197,.08);color:var(--blue);font-weight:900;
-    border:1px solid rgba(36,87,197,.12);
-  }
-  .group-name{font-size:13px;color:var(--muted)}
-  .grid{display:grid;gap:14px}
-  .card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);overflow:hidden;
-  }
-  .card-top{padding:16px 16px 10px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-  .title{margin:0;font-size:19px;line-height:1.35}
-  .tag{
-    flex:0 0 auto;padding:6px 10px;border-radius:999px;background:rgba(36,87,197,.08);
-    border:1px solid rgba(36,87,197,.12);color:var(--blue);font-size:11px;font-weight:800
-  }
-  .desc{margin:0;padding:0 16px 12px;color:var(--muted);font-size:13px;line-height:1.75}
-  .player{padding:0 16px 16px}
-  .btn,.copybtn,.linkbtn{
-    border:none;cursor:pointer;font-weight:800;border-radius:16px;
-  }
-  .btn{
-    width:100%;padding:15px 18px;
-    background:linear-gradient(135deg,var(--gold),#efd68c);
-    color:#1b2330;font-size:16px;box-shadow:0 12px 22px rgba(216,184,90,.18);
-  }
-  .btn:active{transform:scale(.99)}
-  .meta{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)}
-  .progress{margin-top:10px;width:100%;height:10px;border-radius:999px;overflow:hidden;background:#edf2ff}
-  .progress>div{width:0%;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--blue2))}
-  .openline{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-  .linkbtn,.copybtn{
-    padding:10px 12px;background:#fff;border:1px solid var(--line);color:var(--blue);font-size:13px;
-  }
-  .copybtn{color:var(--muted)}
-  .hint{font-size:12px;color:var(--muted);margin-top:8px;word-break:break-all}
-  audio{display:none}
-  .footer{
-    margin-top:18px;text-align:center;color:#8a96b0;font-size:12px;line-height:1.8;padding:10px 8px 0;
-  }
-  .hidden{display:none !important}
-  .mini{
-    margin-top:14px;background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:22px;
-    padding:14px;color:#4d5f82;line-height:1.75;font-size:13px;
-  }
-  .mini strong{color:var(--text)}
-  .backbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
-  .backbtn{
-    border:none;cursor:pointer;padding:11px 14px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--blue2));
-    color:#fff;font-weight:800;box-shadow:0 10px 22px rgba(63,123,255,.18)
-  }
-  .single-wrap{margin-top:18px}
-  .single-card{
-    background:var(--card);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;
-  }
-  .single-head{
-    padding:18px 16px 12px;
-    background:linear-gradient(135deg,rgba(36,87,197,.06),rgba(63,123,255,.04));
-    border-bottom:1px solid var(--line);
-  }
-  .single-title{margin:0;font-size:24px;line-height:1.35}
-  .single-sub{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.7}
-  .single-body{padding:16px}
-  .bigbtn{
-    width:100%;border:none;cursor:pointer;padding:16px 18px;border-radius:18px;
-    background:linear-gradient(135deg,var(--gold),#efd68c);
-    color:#1b2330;font-size:17px;font-weight:900;
-    box-shadow:0 12px 22px rgba(216,184,90,.18);
-  }
-  .bigbtn:active{transform:scale(.99)}
-  .audio-meta{
-    display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)
-  }
-  .single-desc{
-    margin:14px 0 0;
-    padding:14px;
-    background:rgba(36,87,197,.04);
-    border:1px solid var(--line);
-    border-radius:18px;
-    color:#4d5f82;
-    font-size:13px;
-    line-height:1.8;
-  }
-  @media (max-width:720px){
-    h1{font-size:26px}
-    .wrap{padding:12px 12px 24px}
-    .toolbar{grid-template-columns:1fr}
-    .seg{justify-content:flex-start}
-    .card-top{padding:14px 14px 8px}
-    .desc,.player{padding-left:14px;padding-right:14px}
-    .single-title{font-size:21px}
-  }
-</style>
+    .wrap { max-width: 1060px; margin: 0 auto; padding: 18px 14px 28px }
+
+    .hero {
+      position: relative; overflow: hidden;
+      border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow);
+      background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(244,249,255,.98));
+      padding: 22px 18px 18px;
+    }
+    .hero::before {
+      content: ""; position: absolute; right: -80px; top: -60px; width: 220px; height: 220px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(63,123,255,.12), rgba(63,123,255,0) 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ""; position: absolute; left: -80px; bottom: -80px; width: 220px; height: 220px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(216,184,90,.12), rgba(216,184,90,0) 72%);
+      pointer-events: none;
+    }
+
+    .topline { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px;
+      background: rgba(36,87,197,.08); border: 1px solid rgba(36,87,197,.12);
+      color: var(--blue); font-size: 12px; font-weight: 800; letter-spacing: .08em;
+    }
+    .chiprow { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end }
+    .chip {
+      padding: 7px 11px; border-radius: 999px; background: #fff; border: 1px solid var(--line);
+      color: var(--muted); font-size: 12px; font-weight: 700;
+    }
+
+    h1 { margin: 16px 0 10px; font-size: 31px; line-height: 1.2; letter-spacing: .02em }
+    .sub { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.8; max-width: 860px }
+    .tip {
+      margin-top: 14px; padding: 13px 14px; border-radius: 18px;
+      background: rgba(36,87,197,.05); border: 1px solid var(--line); color: #4d5f82;
+      font-size: 13px; line-height: 1.7;
+    }
+
+    .toolbar {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+    }
+    .search {
+      display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid var(--line);
+      border-radius: 18px; padding: 12px 14px; box-shadow: 0 8px 22px rgba(0,0,0,.03)
+    }
+    .search input {
+      width: 100%; border: none; outline: none; background: transparent; font-size: 15px; color: var(--text)
+    }
+    .seg { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end }
+    .seg button, .plainbtn {
+      border: none; cursor: pointer; padding: 11px 14px; border-radius: 16px; background: #fff; color: var(--muted);
+      border: 1px solid var(--line); font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,.03)
+    }
+    .seg button.active { background: linear-gradient(135deg,var(--blue),var(--blue2)); color: #fff; border-color: transparent }
+
+    .section-title {
+      display: flex; justify-content: space-between; align-items: end; gap: 10px; flex-wrap: wrap;
+      margin: 18px 4px 10px;
+    }
+    .section-title h2 { margin: 0; font-size: 18px; letter-spacing: .02em }
+    .section-title span { font-size: 12px; color: var(--muted) }
+
+    .group { margin-top: 16px }
+    .group-head {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+      margin: 6px 2px 10px;
+    }
+    .group-letter {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 34px; height: 34px; padding: 0 10px; border-radius: 999px;
+      background: rgba(36,87,197,.08); color: var(--blue); font-weight: 900;
+      border: 1px solid rgba(36,87,197,.12);
+    }
+    .group-name { font-size: 13px; color: var(--muted) }
+    .grid { display: grid; gap: 14px }
+
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .card-top { padding: 16px 16px 10px; display: flex; justify-content: space-between; gap: 10px; align-items: flex-start }
+    .title { margin: 0; font-size: 19px; line-height: 1.35 }
+    .tag {
+      flex: 0 0 auto; padding: 6px 10px; border-radius: 999px; background: rgba(36,87,197,.08);
+      border: 1px solid rgba(36,87,197,.12); color: var(--blue); font-size: 11px; font-weight: 800
+    }
+    .desc { margin: 0; padding: 0 16px 12px; color: var(--muted); font-size: 13px; line-height: 1.75 }
+    .player { padding: 0 16px 16px }
+
+    .btn, .copybtn, .linkbtn {
+      border: none; cursor: pointer; font-weight: 800; border-radius: 16px;
+    }
+    .btn {
+      width: 100%; padding: 15px 18px;
+      background: linear-gradient(135deg,var(--gold),#efd68c);
+      color: #1b2330; font-size: 16px; box-shadow: 0 12px 22px rgba(216,184,90,.18);
+    }
+    .btn:active { transform: scale(.99) }
+
+    .meta {
+      display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-top: 10px;
+      font-size: 12px; color: var(--muted)
+    }
+    .progress {
+      margin-top: 10px; width: 100%; height: 10px; border-radius: 999px; overflow: hidden; background: #edf2ff
+    }
+    .progress>div {
+      width: 0%; height: 100%; border-radius: 999px; background: linear-gradient(90deg,var(--blue),var(--blue2))
+    }
+
+    .openline { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px }
+    .linkbtn, .copybtn {
+      padding: 10px 12px; background: #fff; border: 1px solid var(--line); color: var(--blue); font-size: 13px;
+    }
+    .copybtn { color: var(--muted) }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 8px; word-break: break-all }
+
+    audio { display: none }
+    .footer {
+      margin-top: 18px; text-align: center; color: #8a96b0; font-size: 12px; line-height: 1.8; padding: 10px 8px 0;
+    }
+
+    .hidden { display: none !important }
+    .mini {
+      margin-top: 14px; background: rgba(255,255,255,.78); border: 1px solid var(--line); border-radius: 22px;
+      padding: 14px; color: #4d5f82; line-height: 1.75; font-size: 13px;
+    }
+    .mini strong { color: var(--text) }
+
+    .backbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 16px }
+    .backbtn {
+      border: none; cursor: pointer; padding: 11px 14px; border-radius: 16px; background: linear-gradient(135deg,var(--blue),var(--blue2));
+      color: #fff; font-weight: 800; box-shadow: 0 10px 22px rgba(63,123,255,.18)
+    }
+
+    .single-wrap { margin-top: 18px }
+    .single-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); overflow: hidden;
+    }
+    .single-head {
+      padding: 18px 16px 12px;
+      background: linear-gradient(135deg,rgba(36,87,197,.06),rgba(63,123,255,.04));
+      border-bottom: 1px solid var(--line);
+    }
+    .single-title { margin: 0; font-size: 24px; line-height: 1.35 }
+    .single-sub { margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7 }
+    .single-body { padding: 16px }
+    .bigbtn {
+      width: 100%; border: none; cursor: pointer; padding: 16px 18px; border-radius: 18px;
+      background: linear-gradient(135deg,var(--gold),#efd68c);
+      color: #1b2330; font-size: 17px; font-weight: 900;
+      box-shadow: 0 12px 22px rgba(216,184,90,.18);
+    }
+    .bigbtn:active { transform: scale(.99) }
+    .audio-meta {
+      display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-top: 10px; font-size: 12px; color: var(--muted)
+    }
+    .single-desc {
+      margin: 14px 0 0;
+      padding: 14px;
+      background: rgba(36,87,197,.04);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      color: #4d5f82;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 720px) {
+      h1 { font-size: 26px }
+      .wrap { padding: 12px 12px 24px }
+      .toolbar { grid-template-columns: 1fr }
+      .seg { justify-content: flex-start }
+      .card-top { padding: 14px 14px 8px }
+      .desc, .player { padding-left: 14px; padding-right: 14px }
+      .single-title { font-size: 21px }
+    }
+  </style>
 </head>
 <body>
 <div class="wrap">
@@ -203,17 +226,18 @@
         <span class="chip">移动端适配</span>
       </div>
     </div>
-    <h1 id="pageTitle">银雀山汉墓竹简博物馆语音导览</h1>
-    <p class="sub" id="pageSub">
-      支持"总首页 + 单文物页面"的双模式结构。总首页按首字母分组展示全部文物；
+
+    <h1>银雀山汉墓竹简博物馆语音导览</h1>
+    <p class="sub">
+      支持“总首页 + 单文物页面”的双模式结构。总首页按首字母分组展示全部文物；
       每一张 NFC 卡可单独绑定一个文物网址，打开后只显示该文物的音频播放页。
     </p>
-    <div class="tip" id="pageTip">
+    <div class="tip">
       后期新增文物时，只需要在 <b>items</b> 中添加一条数据，并上传对应音频文件即可；
       如果要给某件文物做独立 NFC 卡，只需把网址写成 <b>?item=文物slug</b>。
     </div>
 
-    <div class="toolbar" id="toolbar">
+    <div class="toolbar">
       <label class="search" aria-label="搜索文物">
         <input id="searchInput" type="text" placeholder="搜索文物名称或关键词…" />
       </label>
@@ -231,6 +255,7 @@
       <span>按首字母分组排序，点击进入对应单页</span>
     </div>
     <div id="groupList"></div>
+
     <div class="mini">
       <strong>总首页说明：</strong><br>
       这里展示所有文物，按首字母分组排序，方便后续持续新增内容。
@@ -255,3 +280,420 @@
       <div class="single-body">
         <button class="bigbtn" id="singleBtn">▶ 播放讲解</button>
         <div class="progress"><div id="singleBar"></div></div>
+        <div class="audio-meta">
+          <span id="singleDuration">时长: --:--</span>
+          <span id="singleStatus">等待播放</span>
+        </div>
+        <p class="single-desc" id="singleDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <audio id="globalAudio" preload="none"></audio>
+
+  <div class="footer">银雀山汉墓竹简博物馆 · 语音导览系统</div>
+</div>
+
+<script>
+(function() {
+  // ==================== 文物数据（修改这里增删改） ====================
+  const items = [
+    {
+      slug: 'sunzi-bingfa',
+      title: '《孙子兵法》竹简',
+      letter: 'S',
+      tag: '兵法',
+      period: '西汉',
+      desc: '银雀山汉墓出土的《孙子兵法》竹简，是迄今发现最早的版本，对研究中国古代军事思想具有重大价值。',
+      audio: 'audio/sunzi-bingfa.mp3'   // ← 替换为你的实际音频路径
+    },
+    {
+      slug: 'sunbin-bingfa',
+      title: '《孙膑兵法》竹简',
+      letter: 'S',
+      tag: '兵法',
+      period: '西汉',
+      desc: '失传千年的《孙膑兵法》在银雀山汉墓重见天日，证实了孙膑其人其书的真实存在。',
+      audio: 'audio/sunbin-bingfa.mp3'
+    },
+    {
+      slug: 'liutao',
+      title: '《六韬》竹简',
+      letter: 'L',
+      tag: '兵书',
+      period: '西汉',
+      desc: '《六韬》残简的出土为研究先秦军事制度提供了珍贵的一手资料。',
+      audio: 'audio/liutao.mp3'
+    },
+    {
+      slug: 'weiliaozi',
+      title: '《尉缭子》竹简',
+      letter: 'W',
+      tag: '兵书',
+      period: '西汉',
+      desc: '《尉缭子》竹简的发现填补了古代兵家著作体系的重要环节。',
+      audio: 'audio/weiliaozi.mp3'
+    },
+    {
+      slug: 'guanzi',
+      title: '《管子》残简',
+      letter: 'G',
+      tag: '诸子',
+      period: '西汉',
+      desc: '《管子》残简反映了战国至汉代政治经济思想的传承。',
+      audio: 'audio/guanzi.mp3'
+    },
+    {
+      slug: 'yinyang',
+      title: '阴阳家佚篇',
+      letter: 'Y',
+      tag: '诸子',
+      period: '西汉',
+      desc: '银雀山出土的阴阳家佚篇，为研究先秦阴阳学说提供了新材料。',
+      audio: 'audio/yinyang.mp3'
+    },
+    {
+      slug: '1hao-mu',
+      title: '1号墓出土漆器',
+      letter: '#',
+      tag: '器物',
+      period: '西汉',
+      desc: '1号墓中出土的精美漆器，展现了汉代高超的工艺水平。',
+      audio: 'audio/1hao-mu.mp3'
+    }
+  ];
+
+  // ==================== DOM 元素 ====================
+  const $ = (id) => document.getElementById(id);
+  const groupList    = $('groupList');
+  const searchInput  = $('searchInput');
+  const filterBtns   = $('filterBtns');
+  const homeView     = $('homeView');
+  const singleView   = $('singleView');
+  const singleTitle  = $('singleTitle');
+  const singleMeta   = $('singleMeta');
+  const singleBtn    = $('singleBtn');
+  const singleBar    = $('singleBar');
+  const singleDuration = $('singleDuration');
+  const singleStatus = $('singleStatus');
+  const singleDesc   = $('singleDesc');
+  const backBtn      = $('backBtn');
+  const globalAudio  = $('globalAudio');
+
+  let currentFilter = 'all';
+  let currentItem = null;
+  let activePlayBtn = null;
+  let progressTimer = null;
+
+  // ==================== 工具函数 ====================
+  function getLetterCategory(letter) {
+    return (letter >= 'A' && letter <= 'Z') ? 'AZ' : '#';
+  }
+
+  function matchesFilter(item, filter) {
+    if (filter === 'all') return true;
+    return getLetterCategory(item.letter) === filter;
+  }
+
+  function matchesSearch(item, query) {
+    if (!query.trim()) return true;
+    const q = query.trim().toLowerCase();
+    return (
+      item.title.toLowerCase().includes(q) ||
+      item.desc.toLowerCase().includes(q) ||
+      item.tag.toLowerCase().includes(q) ||
+      item.slug.toLowerCase().includes(q)
+    );
+  }
+
+  // ==================== 分组与渲染 ====================
+  function getFilteredAndGrouped(filter, searchQuery) {
+    const filtered = items.filter(item => matchesFilter(item, filter) && matchesSearch(item, searchQuery));
+    const groups = {};
+    filtered.forEach(item => {
+      const l = item.letter;
+      if (!groups[l]) groups[l] = [];
+      groups[l].push(item);
+    });
+    const sortedLetters = Object.keys(groups).sort((a, b) => {
+      if (a === '#') return 1;
+      if (b === '#') return -1;
+      return a.localeCompare(b);
+    });
+    return { groups, sortedLetters };
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function renderHome(filter, searchQuery) {
+    const { groups, sortedLetters } = getFilteredAndGrouped(filter, searchQuery);
+
+    if (!sortedLetters.length) {
+      groupList.innerHTML = `<div style="text-align:center;padding:40px 16px;color:var(--muted);font-size:15px;">
+        🔍 没有找到匹配的文物
+      </div>`;
+      return;
+    }
+
+    let html = '';
+    sortedLetters.forEach(letter => {
+      const itemList = groups[letter];
+      html += `<div class="group">
+        <div class="group-head">
+          <div class="group-letter">${letter}</div>
+          <span class="group-name">共 ${itemList.length} 件文物</span>
+        </div>
+        <div class="grid">`;
+
+      itemList.forEach(item => {
+        html += `
+          <div class="card" data-slug="${item.slug}">
+            <div class="card-top">
+              <h3 class="title">${escapeHtml(item.title)}</h3>
+              <span class="tag">${escapeHtml(item.tag)}</span>
+            </div>
+            <p class="desc">${escapeHtml(item.desc)}</p>
+            <div class="player">
+              <button class="btn play-btn" data-slug="${item.slug}">▶ 播放讲解</button>
+              <div class="progress"><div class="progress-bar" data-slug="${item.slug}" style="width:0%"></div></div>
+              <div class="meta">
+                <span>${escapeHtml(item.period)}</span>
+                <span class="time-label" data-slug="${item.slug}">--:--</span>
+              </div>
+              <div class="openline">
+                <button class="linkbtn goto-single" data-slug="${item.slug}">📄 查看单页</button>
+                <button class="copybtn copy-link" data-slug="${item.slug}">🔗 复制链接</button>
+              </div>
+            </div>
+          </div>`;
+      });
+
+      html += `</div></div>`;
+    });
+
+    groupList.innerHTML = html;
+    bindCardEvents();
+  }
+
+  function bindCardEvents() {
+    document.querySelectorAll('.play-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const item = items.find(i => i.slug === this.dataset.slug);
+        if (item) playAudio(item, this);
+      });
+    });
+
+    document.querySelectorAll('.goto-single').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navigateToSingle(this.dataset.slug);
+      });
+    });
+
+    document.querySelectorAll('.copy-link').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const url = `${location.origin}${location.pathname}?item=${this.dataset.slug}`;
+        copyToClipboard(url);
+        const original = this.textContent;
+        this.textContent = '✅ 已复制';
+        setTimeout(() => { this.textContent = original; }, 1500);
+      });
+    });
+  }
+
+  // ==================== 音频控制 ====================
+  function playAudio(item, btnElement) {
+    if (currentItem && currentItem.slug === item.slug) {
+      globalAudio.paused ? globalAudio.play() : globalAudio.pause();
+      updatePlayButton(btnElement, !globalAudio.paused);
+      updatePlayButton(singleBtn, !globalAudio.paused);
+      return;
+    }
+
+    currentItem = item;
+    globalAudio.src = item.audio;
+    globalAudio.load();
+    globalAudio.play().catch(err => {
+      console.warn('音频播放失败:', err.message);
+      alert('音频文件未找到：' + item.audio);
+    });
+
+    if (activePlayBtn) updatePlayButton(activePlayBtn, false);
+    activePlayBtn = btnElement;
+    updatePlayButton(btnElement, true);
+    updatePlayButton(singleBtn, true);
+    startProgressUpdate(item.slug);
+  }
+
+  function updatePlayButton(btn, isPlaying) {
+    if (!btn) return;
+    if (isPlaying) {
+      btn.textContent = btn.textContent.replace('▶', '⏸');
+      if (!btn.textContent.includes('⏸')) btn.textContent = btn.textContent.replace('播放讲解', '⏸ 暂停');
+    } else {
+      btn.textContent = btn.textContent.replace('⏸', '▶');
+      if (!btn.textContent.includes('▶')) btn.textContent = btn.textContent.replace('暂停', '▶ 播放讲解');
+    }
+  }
+
+  function startProgressUpdate(slug) {
+    clearInterval(progressTimer);
+    progressTimer = setInterval(() => {
+      if (!globalAudio.duration || isNaN(globalAudio.duration)) return;
+      const pct = (globalAudio.currentTime / globalAudio.duration) * 100;
+      document.querySelectorAll(`.progress-bar[data-slug="${slug}"]`).forEach(b => b.style.width = pct + '%');
+      if (singleBar) singleBar.style.width = pct + '%';
+
+      const cur = formatTime(globalAudio.currentTime);
+      const total = formatTime(globalAudio.duration);
+      document.querySelectorAll(`.time-label[data-slug="${slug}"]`).forEach(l => l.textContent = `${cur} / ${total}`);
+      if (singleDuration) singleDuration.textContent = `时长: ${cur} / ${total}`;
+      if (singleStatus) singleStatus.textContent = globalAudio.paused ? '已暂停' : '播放中';
+
+      if (globalAudio.ended) {
+        clearInterval(progressTimer);
+        if (activePlayBtn) updatePlayButton(activePlayBtn, false);
+        if (singleBtn) updatePlayButton(singleBtn, false);
+        activePlayBtn = null;
+        if (singleStatus) singleStatus.textContent = '播放完毕';
+      }
+    }, 300);
+  }
+
+  function formatTime(seconds) {
+    if (isNaN(seconds)) return '--:--';
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m}:${s.toString().padStart(2,'0')}`;
+  }
+
+  globalAudio.addEventListener('ended', () => {
+    if (activePlayBtn) updatePlayButton(activePlayBtn, false);
+    if (singleBtn) updatePlayButton(singleBtn, false);
+    activePlayBtn = null;
+    if (singleStatus) singleStatus.textContent = '播放完毕';
+  });
+  globalAudio.addEventListener('pause', () => {
+    if (activePlayBtn) updatePlayButton(activePlayBtn, false);
+    if (singleBtn) updatePlayButton(singleBtn, false);
+    if (singleStatus) singleStatus.textContent = '已暂停';
+  });
+  globalAudio.addEventListener('play', () => {
+    if (activePlayBtn) updatePlayButton(activePlayBtn, true);
+    if (singleBtn) updatePlayButton(singleBtn, true);
+    if (singleStatus) singleStatus.textContent = '播放中';
+  });
+
+  // ==================== 单页与导航 ====================
+  function navigateToSingle(slug) {
+    const item = items.find(i => i.slug === slug);
+    if (!item) return;
+
+    currentItem = item;
+    homeView.classList.add('hidden');
+    singleView.classList.remove('hidden');
+
+    singleTitle.textContent = item.title;
+    singleMeta.textContent = `${item.tag} · ${item.period}`;
+    singleDesc.textContent = item.desc;
+    singleBtn.textContent = '▶ 播放讲解';
+    singleBar.style.width = '0%';
+    singleDuration.textContent = '时长: --:--';
+    singleStatus.textContent = '等待播放';
+
+    const url = new URL(location);
+    url.searchParams.set('item', slug);
+    history.pushState({}, '', url);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goBackHome() {
+    homeView.classList.remove('hidden');
+    singleView.classList.add('hidden');
+    currentItem = null;
+    const url = new URL(location);
+    url.searchParams.delete('item');
+    history.pushState({}, '', url);
+    renderHome(currentFilter, searchInput.value);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  singleBtn.addEventListener('click', () => {
+    if (currentItem) playAudio(currentItem, singleBtn);
+  });
+  backBtn.addEventListener('click', goBackHome);
+
+  // ==================== 筛选与搜索 ====================
+  filterBtns.addEventListener('click', function(e) {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    const filter = btn.dataset.filter;
+    if (!filter) return;
+
+    this.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = filter;
+    renderHome(currentFilter, searchInput.value);
+  });
+
+  searchInput.addEventListener('input', function() {
+    renderHome(currentFilter, this.value);
+  });
+
+  // ==================== 剪贴板 ====================
+  function copyToClipboard(text) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+    } else {
+      fallbackCopy(text);
+    }
+  }
+
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+
+  // ==================== 初始化 ====================
+  function init() {
+    const params = new URLSearchParams(location.search);
+    const slug = params.get('item');
+    if (slug) {
+      const item = items.find(i => i.slug === slug);
+      if (item) {
+        navigateToSingle(slug);
+        return;
+      }
+    }
+    renderHome('all', '');
+  }
+
+  window.addEventListener('popstate', () => {
+    const params = new URLSearchParams(location.search);
+    const slug = params.get('item');
+    if (slug) {
+      const item = items.find(i => i.slug === slug);
+      if (item) {
+        navigateToSingle(slug);
+        return;
+      }
+    }
+    goBackHome();
+  });
+
+  init();
+})();
+</script>
+</body>
+</html>
