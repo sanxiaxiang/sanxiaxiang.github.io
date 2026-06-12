@@ -1,258 +1,269 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>银雀山汉墓竹简博物馆 · 语音导览</title>
-  <style>
-    :root{
-      --bg1:#f6f9ff;
-      --bg2:#eaf2ff;
-      --card:rgba(255,255,255,.92);
-      --line:rgba(36,87,197,.10);
-      --text:#17315c;
-      --muted:#6b7a99;
-      --blue:#2457c5;
-      --blue2:#3f7bff;
-      --gold:#d8b85a;
-      --shadow:0 12px 28px rgba(36,87,197,.12);
-      --radius:22px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;min-height:100%}
-    body{
-      font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(63,123,255,.12), transparent 28%),
-        radial-gradient(circle at top right, rgba(216,184,90,.10), transparent 24%),
-        linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 100%);
-      background-attachment: fixed;
-    }
-    .wrap{max-width:980px;margin:0 auto;padding:18px 14px 28px}
-    .hero{
-      position:relative;overflow:hidden;
-      border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);
-      background:linear-gradient(135deg, rgba(255,255,255,.96), rgba(244,249,255,.96));
-      padding:22px 18px 18px;
-    }
-    .hero::before{
-      content:"";position:absolute;right:-80px;top:-60px;width:220px;height:220px;border-radius:50%;
-      background:radial-gradient(circle, rgba(63,123,255,.12), rgba(63,123,255,0) 70%);pointer-events:none;
-    }
-    .hero::after{
-      content:"";position:absolute;left:-80px;bottom:-80px;width:220px;height:220px;border-radius:50%;
-      background:radial-gradient(circle, rgba(216,184,90,.12), rgba(216,184,90,0) 72%);pointer-events:none;
-    }
-    .topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;
-      background:rgba(36,87,197,.08);border:1px solid rgba(36,87,197,.12);
-      color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.08em;
-    }
-    .chiprow{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
-    .chip{
-      padding:7px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);
-      color:var(--muted);font-size:12px;font-weight:700;
-    }
-    h1{margin:16px 0 10px;font-size:31px;line-height:1.2;letter-spacing:.02em}
-    .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.8;max-width:820px}
-    .tip{
-      margin-top:14px;padding:13px 14px;border-radius:18px;
-      background:rgba(36,87,197,.05);border:1px solid var(--line);color:#4d5f82;
-      font-size:13px;line-height:1.7;
-    }
-    .section-title{
-      display:flex;justify-content:space-between;align-items:end;gap:10px;flex-wrap:wrap;
-      margin:18px 4px 10px;
-    }
-    .section-title h2{margin:0;font-size:18px;letter-spacing:.02em}
-    .section-title span{font-size:12px;color:var(--muted)}
-    .toolbar{
-      margin-top:14px;
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:10px;
-    }
-    .search{
-      display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
-      border-radius:18px;padding:12px 14px;box-shadow:0 8px 22px rgba(0,0,0,.03)
-    }
-    .search input{
-      width:100%;border:none;outline:none;background:transparent;font-size:15px;color:var(--text)
-    }
-    .seg{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-    .seg button{
-      border:none;cursor:pointer;padding:11px 14px;border-radius:16px;background:#fff;color:var(--muted);
-      border:1px solid var(--line);font-weight:700;box-shadow:0 8px 20px rgba(0,0,0,.03)
-    }
-    .seg button.active{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border-color:transparent}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>银雀山汉墓竹简博物馆 · 语音导览</title>
+<style>
+  :root{
+    --bg1:#f7faff;
+    --bg2:#eaf2ff;
+    --card:rgba(255,255,255,.94);
+    --line:rgba(36,87,197,.10);
+    --text:#17315c;
+    --muted:#6b7a99;
+    --blue:#2457c5;
+    --blue2:#3f7bff;
+    --gold:#d8b85a;
+    --shadow:0 12px 28px rgba(36,87,197,.12);
+    --radius:22px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;min-height:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(63,123,255,.12), transparent 28%),
+      radial-gradient(circle at top right, rgba(216,184,90,.10), transparent 24%),
+      linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 100%);
+    background-attachment: fixed;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:18px 14px 28px}
+  .hero{
+    position:relative;overflow:hidden;
+    border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);
+    background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(244,249,255,.98));
+    padding:22px 18px 18px;
+  }
+  .hero::before{
+    content:"";position:absolute;right:-80px;top:-60px;width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle, rgba(63,123,255,.12), rgba(63,123,255,0) 70%);pointer-events:none;
+  }
+  .hero::after{
+    content:"";position:absolute;left:-80px;bottom:-80px;width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle, rgba(216,184,90,.12), rgba(216,184,90,0) 72%);pointer-events:none;
+  }
+  .topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;
+    background:rgba(36,87,197,.08);border:1px solid rgba(36,87,197,.12);
+    color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.08em;
+  }
+  .chiprow{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+  .chip{
+    padding:7px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);
+    color:var(--muted);font-size:12px;font-weight:700;
+  }
+  h1{margin:16px 0 10px;font-size:31px;line-height:1.2;letter-spacing:.02em}
+  .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.8;max-width:860px}
+  .tip{
+    margin-top:14px;padding:13px 14px;border-radius:18px;
+    background:rgba(36,87,197,.05);border:1px solid var(--line);color:#4d5f82;
+    font-size:13px;line-height:1.7;
+  }
 
-    .group{margin-top:16px}
-    .group-head{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-      margin:6px 2px 10px;
-    }
-    .group-letter{
-      display:inline-flex;align-items:center;justify-content:center;
-      width:34px;height:34px;border-radius:50%;
-      background:rgba(36,87,197,.08);color:var(--blue);font-weight:900;
-      border:1px solid rgba(36,87,197,.12);
-    }
-    .group-name{font-size:13px;color:var(--muted)}
-    .grid{display:grid;gap:14px}
-    .card{
-      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-      box-shadow:var(--shadow);overflow:hidden;
-    }
-    .card-top{padding:16px 16px 10px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-    .title{margin:0;font-size:19px;line-height:1.35}
-    .tag{
-      flex:0 0 auto;padding:6px 10px;border-radius:999px;background:rgba(36,87,197,.08);
-      border:1px solid rgba(36,87,197,.12);color:var(--blue);font-size:11px;font-weight:800
-    }
-    .desc{margin:0;padding:0 16px 12px;color:var(--muted);font-size:13px;line-height:1.75}
-    .player{padding:0 16px 16px}
-    .btn,.linkbtn,.copybtn{
-      border:none;cursor:pointer;font-weight:800;border-radius:16px;
-    }
-    .btn{
-      width:100%;padding:15px 18px;
-      background:linear-gradient(135deg,var(--gold),#efd68c);
-      color:#1b2330;font-size:16px;box-shadow:0 12px 22px rgba(216,184,90,.18);
-    }
-    .btn:active{transform:scale(.99)}
-    .meta{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)}
-    .progress{margin-top:10px;width:100%;height:10px;border-radius:999px;overflow:hidden;background:#edf2ff}
-    .progress>div{width:0%;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--blue2))}
-    .openline{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .linkbtn,.copybtn{
-      padding:10px 12px;background:#fff;border:1px solid var(--line);color:var(--blue);font-size:13px;
-    }
-    .copybtn{color:var(--muted)}
-    .hint{font-size:12px;color:var(--muted);margin-top:8px;word-break:break-all}
-    audio{display:none}
-    .footer{
-      margin-top:18px;text-align:center;color:#8a96b0;font-size:12px;line-height:1.8;padding:10px 8px 0;
-    }
-    .hidden{display:none !important}
-    .mini{
-      margin-top:14px;background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:22px;
-      padding:14px;color:#4d5f82;line-height:1.75;font-size:13px;
-    }
-    .mini strong{color:var(--text)}
-    @media (max-width:720px){
-      h1{font-size:26px}
-      .wrap{padding:12px 12px 24px}
-      .toolbar{grid-template-columns:1fr}
-      .seg{justify-content:flex-start}
-      .card-top{padding:14px 14px 8px}
-      .desc,.player{padding-left:14px;padding-right:14px}
-    }
-  </style>
+  .toolbar{
+    margin-top:14px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:10px;
+  }
+  .search{
+    display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+    border-radius:18px;padding:12px 14px;box-shadow:0 8px 22px rgba(0,0,0,.03)
+  }
+  .search input{
+    width:100%;border:none;outline:none;background:transparent;font-size:15px;color:var(--text)
+  }
+  .seg{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .seg button,.plainbtn{
+    border:none;cursor:pointer;padding:11px 14px;border-radius:16px;background:#fff;color:var(--muted);
+    border:1px solid var(--line);font-weight:700;box-shadow:0 8px 20px rgba(0,0,0,.03)
+  }
+  .seg button.active{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border-color:transparent}
+
+  .section-title{
+    display:flex;justify-content:space-between;align-items:end;gap:10px;flex-wrap:wrap;
+    margin:18px 4px 10px;
+  }
+  .section-title h2{margin:0;font-size:18px;letter-spacing:.02em}
+  .section-title span{font-size:12px;color:var(--muted)}
+
+  .group{margin-top:16px}
+  .group-head{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+    margin:6px 2px 10px;
+  }
+  .group-letter{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:34px;height:34px;padding:0 10px;border-radius:999px;
+    background:rgba(36,87,197,.08);color:var(--blue);font-weight:900;
+    border:1px solid rgba(36,87,197,.12);
+  }
+  .group-name{font-size:13px;color:var(--muted)}
+  .grid{display:grid;gap:14px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .card-top{padding:16px 16px 10px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+  .title{margin:0;font-size:19px;line-height:1.35}
+  .tag{
+    flex:0 0 auto;padding:6px 10px;border-radius:999px;background:rgba(36,87,197,.08);
+    border:1px solid rgba(36,87,197,.12);color:var(--blue);font-size:11px;font-weight:800
+  }
+  .desc{margin:0;padding:0 16px 12px;color:var(--muted);font-size:13px;line-height:1.75}
+  .player{padding:0 16px 16px}
+  .btn,.copybtn,.linkbtn{
+    border:none;cursor:pointer;font-weight:800;border-radius:16px;
+  }
+  .btn{
+    width:100%;padding:15px 18px;
+    background:linear-gradient(135deg,var(--gold),#efd68c);
+    color:#1b2330;font-size:16px;box-shadow:0 12px 22px rgba(216,184,90,.18);
+  }
+  .btn:active{transform:scale(.99)}
+  .meta{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)}
+  .progress{margin-top:10px;width:100%;height:10px;border-radius:999px;overflow:hidden;background:#edf2ff}
+  .progress>div{width:0%;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--blue2))}
+  .openline{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .linkbtn,.copybtn{
+    padding:10px 12px;background:#fff;border:1px solid var(--line);color:var(--blue);font-size:13px;
+  }
+  .copybtn{color:var(--muted)}
+  .hint{font-size:12px;color:var(--muted);margin-top:8px;word-break:break-all}
+  audio{display:none}
+  .footer{
+    margin-top:18px;text-align:center;color:#8a96b0;font-size:12px;line-height:1.8;padding:10px 8px 0;
+  }
+  .hidden{display:none !important}
+  .mini{
+    margin-top:14px;background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:22px;
+    padding:14px;color:#4d5f82;line-height:1.75;font-size:13px;
+  }
+  .mini strong{color:var(--text)}
+  .backbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
+  .backbtn{
+    border:none;cursor:pointer;padding:11px 14px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--blue2));
+    color:#fff;font-weight:800;box-shadow:0 10px 22px rgba(63,123,255,.18)
+  }
+  .single-wrap{
+    margin-top:18px;
+  }
+  .single-card{
+    background:var(--card);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;
+  }
+  .single-head{
+    padding:18px 16px 12px;
+    background:linear-gradient(135deg,rgba(36,87,197,.06),rgba(63,123,255,.04));
+    border-bottom:1px solid var(--line);
+  }
+  .single-title{margin:0;font-size:24px;line-height:1.35}
+  .single-sub{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.7}
+  .single-body{padding:16px}
+  .bigbtn{
+    width:100%;border:none;cursor:pointer;padding:16px 18px;border-radius:18px;
+    background:linear-gradient(135deg,var(--gold),#efd68c);
+    color:#1b2330;font-size:17px;font-weight:900;
+    box-shadow:0 12px 22px rgba(216,184,90,.18);
+  }
+  .bigbtn:active{transform:scale(.99)}
+  .audio-meta{
+    display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)
+  }
+  .single-desc{
+    margin:14px 0 0;
+    padding:14px;
+    background:rgba(36,87,197,.04);
+    border:1px solid var(--line);
+    border-radius:18px;
+    color:#4d5f82;
+    font-size:13px;
+    line-height:1.8;
+  }
+  @media (max-width:720px){
+    h1{font-size:26px}
+    .wrap{padding:12px 12px 24px}
+    .toolbar{grid-template-columns:1fr}
+    .seg{justify-content:flex-start}
+    .card-top{padding:14px 14px 8px}
+    .desc,.player{padding-left:14px;padding-right:14px}
+    .single-title{font-size:21px}
+  }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <section class="hero">
-      <div class="topline">
-        <div class="badge">银雀山汉墓竹简博物馆 · AUDIO GUIDE</div>
-        <div class="chiprow">
-          <span class="chip">单卡单页</span>
-          <span class="chip">NFC导览</span>
-          <span class="chip">移动端适配</span>
-        </div>
-      </div>
-      <h1 id="pageTitle">银雀山汉墓竹简博物馆语音导览</h1>
-      <p class="sub" id="pageSub">支持“总首页 + 单文物页面”的双模式结构。总首页按首字母分组展示全部文物；每一张 NFC 卡可单独绑定一个文物网址，打开后只显示该文物的音频播放页。</p>
-      <div class="tip" id="pageTip">后期新增文物时，只需要在 <b>items</b> 中添加一条数据，并上传对应音频文件即可；如果要给某件文物做独立 NFC 卡，只需把网址写成 <b>?item=文物slug</b>。</div>
-
-      <div class="toolbar" id="toolbar">
-        <label class="search" aria-label="搜索文物">
-          <input id="searchInput" type="text" placeholder="搜索文物名称或关键词…" />
-        </label>
-        <div class="seg">
-          <button class="active" data-filter="all">全部</button>
-          <button data-filter="A-Z">A-Z</button>
-          <button data-filter="#">其他</button>
-        </div>
-      </div>
-    </section>
-
-    <div id="homeView">
-      <div class="section-title">
-        <h2>文物总首页</h2>
-        <span>按首字母分组排序，点击进入对应单页</span>
-      </div>
-      <div id="groupList"></div>
-      <div class="mini">
-        <strong>总首页说明：</strong><br>
-        这里展示所有文物，按首字母分组排序，方便后续持续新增内容。你们只要维护一份数据表，就能自动生成首页列表。
+<div class="wrap">
+  <section class="hero">
+    <div class="topline">
+      <div class="badge">银雀山汉墓竹简博物馆 · AUDIO GUIDE</div>
+      <div class="chiprow">
+        <span class="chip">单卡单页</span>
+        <span class="chip">NFC导览</span>
+        <span class="chip">移动端适配</span>
       </div>
     </div>
-
-    <div id="singleView" class="hidden">
-      <div class="section-title">
-        <h2>当前文物讲解</h2>
-        <span>单卡单页模式</span>
-      </div>
-      <article class="card" id="singleCard">
-        <div class="card-top">
-          <h3 class="title" id="singleTitle"></h3>
-          <span class="tag" id="singleTag"></span>
-        </div>
-        <p class="desc" id="singleDesc"></p>
-        <div class="player">
-          <button class="btn" id="singleBtn">▶ 播放讲解</button>
-          <div class="progress"><div id="singleBar"></div></div>
-          <div class="meta"><span id="singleTime">0:00 / 0:00</span><span id="singleStatus">未播放</span></div>
-          <audio id="singleAudio" preload="metadata"></audio>
-        </div>
-      </article>
-      <div class="mini">
-        <strong>单页说明：</strong><br>
-        适合直接绑定到 NFC 卡片。游客扫到该卡后，会直接进入当前文物的讲解页面，不会看到其它内容。
-      </div>
+    <h1 id="pageTitle">银雀山汉墓竹简博物馆语音导览</h1>
+    <p class="sub" id="pageSub">
+      支持“总首页 + 单文物页面”的双模式结构。总首页按首字母分组展示全部文物；
+      每一张 NFC 卡可单独绑定一个文物网址，打开后只显示该文物的音频播放页。
+    </p>
+    <div class="tip" id="pageTip">
+      后期新增文物时，只需要在 <b>items</b> 中添加一条数据，并上传对应音频文件即可；
+      如果要给某件文物做独立 NFC 卡，只需把网址写成 <b>?item=文物slug</b>。
     </div>
 
-    <div class="footer">
-      银座山汉墓竹简博物馆语音导览页面 · 轻量化、可扩展、适合 NFC 单卡单页部署
+    <div class="toolbar" id="toolbar">
+      <label class="search" aria-label="搜索文物">
+        <input id="searchInput" type="text" placeholder="搜索文物名称或关键词…" />
+      </label>
+      <div class="seg">
+        <button class="active" data-filter="all">全部</button>
+        <button data-filter="AZ">A-Z</button>
+        <button data-filter="#">其他</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="homeView">
+    <div class="section-title">
+      <h2>文物总首页</h2>
+      <span>按首字母分组排序，点击进入对应单页</span>
+    </div>
+    <div id="groupList"></div>
+    <div class="mini">
+      <strong>总首页说明：</strong><br>
+      这里展示所有文物，按首字母分组排序，方便后续持续新增内容。
+      你们只要维护一份数据表，就能自动生成首页列表。
     </div>
   </div>
 
-  <script>
-    const baseUrl = location.origin + location.pathname;
+  <div id="singleView" class="hidden single-wrap">
+    <div class="backbar">
+      <div class="section-title" style="margin:0">
+        <h2>当前文物讲解</h2>
+        <span>单卡单页模式</span>
+      </div>
+      <button class="backbtn" id="backBtn">← 返回首页</button>
+    </div>
 
-    // 新增文物时：只需要在这里增加一条数据
-    // slug = 文物唯一标识（用于 ?item=slug）
-    // initial = 首字母分组（A-Z 或 #）
-    const items = [
-      {
-        slug:'sunzi',
-        initial:'S',
-        title:'《孙子兵法》竹简',
-        tag:'重点文物',
-        desc:'介绍 银雀山汉简的发现意义、文献价值与《孙子兵法》在中国军事思想史中的地位。',
-        audio:'audio-sunzi.mp3',
-        keywords:'孙子 兵法 竹简 军事'
-      },
-      {
-        slug:'overview',
-        initial:'Y',
-        title:'银雀山汉简总览',
-        tag:'入口导览',
-        desc:'概述博物馆核心展陈与竹简文化背景，帮助观众快速建立参观认知。',
-        audio:'audio-yinqueshan-overview.mp3',
-        keywords:'银雀山 汉简 总览 博物馆'
-      },
-      {
-        slug:'junzheng',
-        initial:'H',
-        title:'汉代军政与竹简文书',
-        tag:'文化解读',
-        desc:'从简牍内容切入，讲解汉代军政制度、文书形式与历史信息的保存方式。',
-        audio:'audio-junzheng.mp3',
-        keywords:'汉代 军政 文书 竹简'
-      },
-      {
-        slug:'protection',
-        initial:'Z',
+    <div class="single-card">
+      <div class="single-head">
+        <h3 class="single-title" id="singleTitle"></h3>
+        <p class="single-sub" id="singleMeta"></p>
+      </div>
+      <div class="single-body">
+        <button class="bigbtn" id="singleBtn">▶ 播放讲解</button>
+        <div class="progress"><div id="singleBar"></div></div>
+        <div class="audio-meta">
+          <spa
+            {
+  slug:'newitem',
+  initial:'N',
+  title:'东方树叶',
+  tag:'重点文物',
+  desc:'好茶无需摇',
+  audio:'audio/audio-dongfangshuye.mp3',
+  keywords:'关键词1 关键词2'
+}
